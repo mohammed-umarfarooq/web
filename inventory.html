@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory - Inventory Management</title>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            background-image: url('back.jpg');
+}
+
+/* Header Navigation */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+   
+            color: #ffffff;
+            background-image: url('back.jpg');
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+
+
+
+.inventory-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.inventory-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    width: 300px;
+}
+
+.inventory-container input,
+.inventory-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.inventory-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+.inventory-container button:hover {
+    background-color: #0056b3;
+}
+
+.inventory-container table {
+    margin: 20px auto;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.inventory-container table th,
+.inventory-container table td {
+    border: 3px solid #0c0808;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    margin-top: 200px;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <a href="home.html">Home</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="about.html">About</a>
+            <a href="index.html">logout</a>
+        </div>
+    </header>
+
+    <!-- Inventory Page Content -->
+    <div class="inventory-container">
+        <h1>Your Inventory</h1>
+        <button onclick="goToHome()" style="margin: 10px;">Back to Home</button> <br>
+        <input type="text" id="search-bar" placeholder="Search products..." style="width: 50%;">
+        <form id="add-product-form">
+            <input type="text" placeholder="Product Name" required>
+            <input type="number" placeholder="Quantity" required>
+            <textarea placeholder="Product Description"></textarea>
+            <button type="submit">Add Product</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+    </div>
+
+    <footer>© 2024 Inventory Management System</footer>
+    <script >
+        function goToHome() {
+    window.location.href = 'home.html';
+}
+
+// Add products dynamically
+document.getElementById('add-product-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const productName = event.target.querySelector('input[placeholder="Product Name"]').value;
+    const quantity = event.target.querySelector('input[placeholder="Quantity"]').value;
+    const description = event.target.querySelector('textarea').value;
+
+    const table = document.querySelector('table tbody');
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${productName}</td><td>${quantity}</td><td>${description}</td>`;
+    table.appendChild(row);
+
+    event.target.reset();
+
+    // Search 
+    // Search
+document.getElementById('search-bar').addEventListener('input', function (event) {
+    const searchValue = event.target.value.toLowerCase();
+    document.querySelectorAll('table tbody tr').forEach(row => {
+        const productName = row.cells[0].textContent.toLowerCase();
+        row.style.display = productName.includes(searchValue) ? '' : 'none';
+    });
+});
+
+
+
+
+});
+
+    </script>
+</body>
+</html>
