@@ -52,10 +52,10 @@
     <!-- Navigation Bar -->
     <header>
         <div class="navbar">
-            <a href="home.html">Home</a>
-            <a href="inventory.html">Inventory</a>
-            <a href="about.html">About</a>
-            <a href="index.html">Logout</a>
+            <a href="home.html" onclick="hom()">Home</a>
+            <a href="inventory.html"  onclick="inven()">Inventory</a>
+            <a href="about.html" onclick="about()">About</a>
+            <a href="index.html" onclick="out()">logout</a>
         </div>
     </header>
     <!-- About Us Content -->
@@ -89,5 +89,21 @@
         Contact us:<p >phone:<a href="color " style="color: #bb86fc;">7829548656</p>
 
     </footer>
+    <script>
+   function out(){
+    alert('loging out');
+}
+function about(){
+    alert('redirecting to about section');
+}
+function inven(){
+    alert('redirecting to inventory');
+}
+function hom(){
+    alert('redirecting to home page');
+}
+
+
+    </script>
 </body>
 </html>
