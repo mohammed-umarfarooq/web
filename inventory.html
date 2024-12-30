@@ -97,10 +97,10 @@ footer {
     <!-- Navigation Bar -->
     <header>
         <div class="navbar">
-            <a href="home.html">Home</a>
-            <a href="inventory.html">Inventory</a>
-            <a href="about.html">About</a>
-            <a href="index.html">logout</a>
+            <a href="home.html" onclick="hom()">Home</a>
+            <a href="inventory.html"  onclick="inven()">Inventory</a>
+            <a href="about.html" onclick="about()">About</a>
+            <a href="index.html" onclick="out()">logout</a>
         </div>
     </header>
 
@@ -129,13 +129,14 @@ footer {
         </table>
     </div>
 
-    <footer>© 2024 Inventory Management System</footer>
+    <footer>&copy; 2024 Inventory Management System</footer>
     <script >
         function goToHome() {
     window.location.href = 'home.html';
+    alert('redirecting to home page');
 }
 
-// Add products dynamically
+// Add products 
 document.getElementById('add-product-form').addEventListener('submit', function (event) {
     event.preventDefault();
     const productName = event.target.querySelector('input[placeholder="Product Name"]').value;
@@ -147,9 +148,10 @@ document.getElementById('add-product-form').addEventListener('submit', function 
     row.innerHTML = `<td>${productName}</td><td>${quantity}</td><td>${description}</td>`;
     table.appendChild(row);
 
-    event.target.reset();
 
-    // Search 
+    event.target.reset();
+     alert('product added');
+     
     // Search
 document.getElementById('search-bar').addEventListener('input', function (event) {
     const searchValue = event.target.value.toLowerCase();
@@ -163,6 +165,19 @@ document.getElementById('search-bar').addEventListener('input', function (event)
 
 
 });
+function out(){
+    alert('loging out');
+}
+function about(){
+    alert('redirecting to about section');
+}
+function inven(){
+    alert('redirecting to inventory');
+}
+function hom(){
+    alert('redirecting to home page');
+}
+
 
     </script>
 </body>
